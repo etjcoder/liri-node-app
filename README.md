@@ -86,4 +86,7 @@ Spotify test: spotify-this-song,"I Want it That Way"
 OMDB test: movie-this,"Terminator"
 Concert test: concert-this,Rolling Stones
 
+EXAMPLE VIDEO OF DO-WHAT-IT-SAYS FUNCTION: (https://share.getcloudapp.com/bLuJozdR)
+
+################################################################################
 

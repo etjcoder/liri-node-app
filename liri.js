@@ -276,8 +276,8 @@ fs.readFile(filename, 'utf8', function(err, data) {
         var movieLanguage = response.data.Language;
         var moviePlot = response.data.Plot;
         var movieActors = response.data.Actors;
-        var movieName = movie.toUpperCase();
-        var movieString = `You've requested information on ${movieName}. ${movieTitle} was released in ${movieCountry} in ${movieYear}. It's original release was in ${movieLanguage}.\n It received a ${movieRating} score from IMDB. \n The movie features ${movieActors}. \n The plot of the movie is: ${moviePlot}`
+        // var movieName = movie.toUpperCase();
+        var movieString = `You've requested information on ${movieTitle}. ${movieTitle} was released in ${movieCountry} in ${movieYear}. It's original release was in ${movieLanguage}.\n It received a ${movieRating} score from IMDB. \n The movie features ${movieActors}. \n The plot of the movie is: ${moviePlot}`
     
         fs.appendFile('log.txt', divider + movieString, function (err) {
             if (err) throw err;
@@ -299,7 +299,7 @@ fs.readFile(filename, 'utf8', function(err, data) {
     .then(function(response){
         console.log("ran successfully")
         // console.log(response.data);
-        for( i = 0; i < 10; i++) {
+        for( i = 0; i < response.data.length; i++) {
             console.log("-----------------------")
             console.log(response.data[i].venue.name);
             console.log(response.data[i].venue.city);
@@ -308,17 +308,16 @@ fs.readFile(filename, 'utf8', function(err, data) {
             console.log("-----------------------")
             
         }
-        var venue = response.data[0].venue.name;
+            var venue = response.data[0].venue.name;
             var city = response.data[0].venue.city;
             var time = moment(response.data[0].datetime).format("MM-DD-YYYY");
-            var artists = artist.toUpperCase();
-            var showString = `You've requested the next upcoming shows for ${artists}! The next show will be at the ${venue} in ${city} on ${time}`
+            var artists = reqArtist
+            var myShowString = `You've requested the next upcoming shows for ${artists}! The next show will be at the ${venue} in ${city} on ${time}`
 
-            console.log(showString);
-            fs.appendFile('log.txt', divider + showString, function (err) {
-                if (err) throw err;
-                console.log('Saved!');
-              });
+            fs.appendFile('log.txt', divider + myShowString, function(err){
+                if(err) throw err;
+                console.log('Saved');
+            });
     })
     }
 
