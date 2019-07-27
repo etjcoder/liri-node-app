@@ -31,7 +31,7 @@ console.log(request);
 ///// ex: node liri.js concert-this <artist>
     /// shows: Name of venue, Venue location, Date of event (moment format "MM/DD/YYYY")
 
-var artist = process.argv.slice(3).join("");
+var artist = process.argv.slice(3).join(" ");
 
 var queryURL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp&date=upcoming";
 
@@ -41,7 +41,7 @@ axios
     .then(function(response){
         // console.log(response.data);
         console.log(response.data.length);
-        for( i = 0; i < response.data.length; i++) {
+        for( i = 0; i < 10; i++) {
             console.log("-----------------------")
             console.log(response.data[i].venue.name);
             console.log(response.data[i].venue.city);
@@ -76,7 +76,7 @@ axios
 /// 'spotify-this <song name here>
 ////// ex: node liri.js spotify-this '<song name here>'
     /// shows: Artist, song's name, preview link of song, album song is from
-var songName = process.argv.slice(3).join("");
+var songName = process.argv.slice(3).join(" ");
 
 if (request == 'spotify-this') {
 spotify.search({ 
@@ -133,7 +133,7 @@ spotify.search({
     /// shows: Title, Year, IMDB Rating, Rotten tomatoes rating, country produced, language of movie, plot of movie, actors in movie
     // **Note axios package will be used for this, for OMDB api key use 'trilogy'
 
-var movie = process.argv.slice(3).join("")
+var movie = process.argv.slice(3).join(" ")
 // console.log(movie)
 var queryURL2 = "http://www.omdbapi.com/?apikey=trilogy&t=" + movie + "&y=&plot=short"
 
