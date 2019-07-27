@@ -144,10 +144,46 @@ axios
         ///Should run spotify-this-song for "I want it that way" as follows  the text in random.txt
         //////edit text in random.txt to test out the feature for movie-this and concert-this
 
+var fs = require('fs')
+
+if(request == "do-what-it-says") {
+
+filename = process.argv[3]
+
+fs.readFile(filename, 'utf8', function(err, data) {
+    if (err) throw err;
+    console.log("OK: " + filename);
+    console.log(data);
+    console.log(data.slice(18))
+    ///// SPOTIFY-THIS INTEGRATION /////
+    spotify.search({ 
+        type: 'track',
+        query: data.slice(18),
+    }, function(err, data) {
+    if (err) {
+        return console.log('Error occured: ' + err);
+    }
+    // console.log(data);
+    trackArray = data.tracks.items
+    // console.log(trackArray);
+    // console.log(JSON.stringify(trackArray[0], null, 2))
+    // console.log(trackArray[0])
+    console.log("----------------------------------------------------------------------------")
+    console.log("Artists: " + trackArray[0].artists[0].name);
+    console.log("Song Name: " + trackArray[0].name);
+    console.log("Spotify Link: " + trackArray[0].external_urls.spotify);
+    console.log("Album Name: " + trackArray[0].album.name);
+    console.log("----------------------------------------------------------------------------")
+}
+
+)
 
 
 
 
+})
+
+}
 
 
 //\\\\////\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\\/\/\/\/\\\/
