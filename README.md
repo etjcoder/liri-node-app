@@ -34,7 +34,7 @@ The list of data will include the:
 
 This function will also log the first upcoming show into the log.txt for your review.
 
-
+EXAMPLE VIDEO FOR CONCERT-THIS: (https://share.getcloudapp.com/Wnuw42d5)
 ############################ SPOTIFY-THIS ###############################
 
 The spotify-this function's primary role is to provide the user with details about a song track name. The user will use the following syntax in the command prompt to run this function:
@@ -50,8 +50,7 @@ The list of data will include the:
 
 This function will also log the name, artists, spotify link and album name into the log.txt for your review.
 
-
-
+EXAMPLE VIDEO FOR SPOTIFY-THIS: (https://share.getcloudapp.com/GGuLxnLQ)
 ############################# MOVIE-THIS ####################################
 
 The movie-this function's primary role is to provide the user with details about a movie that they search by name. The user must use this syntax in the command prompt to run this function:
@@ -70,8 +69,7 @@ The list of data will include the:
 
 This function will also log the title, year released, etc. into the log.txt for your review.
 
-
-
+EXAMPLE-VIDEO OF MOVIE-THIS: (https://share.getcloudapp.com/E0uld5PG)
 ########################### DO-WHAT-IT-SAYS ###################################
 
 The final hidden fourth function which is more of an experimental function to test the limits of Liri is the do-what-it-says function.
@@ -84,6 +82,8 @@ EX: node liri.js spotify-this I want it that way
 
 This will trigger the Spotify-this function detailed above.
 
-
+Spotify test: spotify-this-song,"I Want it That Way"
+OMDB test: movie-this,"Terminator"
+Concert test: concert-this,Rolling Stones
 
 
