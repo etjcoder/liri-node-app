@@ -1,7 +1,7 @@
 # liri-node-app
 
 
-####### LIRI - LANGUAGE INTERPRETER RESPONSE INTERFACE #############
+####### LIRI - LANGUAGE INTERPRETER RESPONSE INTERFACE #######
 
 Liri was inspired by Apple's Siri. Liri is a primitive proto-type for Siri that demostrates some of the basic functionalities of a response interface.
 
@@ -23,7 +23,8 @@ The above is an array called process.argv. The first item in the array is 'node'
 
 Anything after [2] will be included in Array slot 3. This is because we have used a .split(3) function that will split everything in the array after 2 into one variable. You may use multiple separate words because we use a .join(" ") function to separate each word from one combined word into multiple.
 
-########################### CONCERT-THIS ###############################
+/
+########## CONCERT-THIS ################
 
 The concert-this function's primary role is to provide the user with upcoming shows for one of their favorite artists/bands. In the console the user will be given a list of 10 upcoming shows in order of soonest to furthers away. 
 
@@ -35,7 +36,9 @@ The list of data will include the:
 This function will also log the first upcoming show into the log.txt for your review.
 
 EXAMPLE VIDEO FOR CONCERT-THIS: (https://share.getcloudapp.com/Wnuw42d5)
-############################ SPOTIFY-THIS ###############################
+
+/
+######### SPOTIFY-THIS ################
 
 The spotify-this function's primary role is to provide the user with details about a song track name. The user will use the following syntax in the command prompt to run this function:
 
@@ -51,7 +54,9 @@ The list of data will include the:
 This function will also log the name, artists, spotify link and album name into the log.txt for your review.
 
 EXAMPLE VIDEO FOR SPOTIFY-THIS: (https://share.getcloudapp.com/GGuLxnLQ)
-############################# MOVIE-THIS ####################################
+
+/
+########## MOVIE-THIS ###################
 
 The movie-this function's primary role is to provide the user with details about a movie that they search by name. The user must use this syntax in the command prompt to run this function:
 
@@ -70,6 +75,8 @@ The list of data will include the:
 This function will also log the title, year released, etc. into the log.txt for your review.
 
 EXAMPLE-VIDEO OF MOVIE-THIS: (https://share.getcloudapp.com/E0uld5PG)
+
+/
 ########################### DO-WHAT-IT-SAYS ###################################
 
 The final hidden fourth function which is more of an experimental function to test the limits of Liri is the do-what-it-says function.
