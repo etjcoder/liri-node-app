@@ -74,13 +74,19 @@ EXAMPLE-VIDEO OF MOVIE-THIS: (https://share.getcloudapp.com/E0uld5PG)
 
 The final hidden fourth function which is more of an experimental function to test the limits of Liri is the do-what-it-says function.
 
-This function will read a string of text from a "random.txt" file. This string of text will take the place of the 2nd and 3rd arguments in our command line.
+The command line will play off the same argument syntax as the last couple, but with some adjustments:
 
-EX: node liri.js do-what-it-says
->Liri will read the random.txt and pull the string making a new request:
-EX: node liri.js spotify-this I want it that way
+Ex: node liri.js do-what-it-says random.txt
+Args:[0]  [1]         [2]           [3]
+In thie array the [3] argument is the text file.
 
-This will trigger the Spotify-this function detailed above.
+This function will read a string of text from a "random.txt" file and then split that into a new array called fileArray. 
+    ex: var fileArray = ['spotify-this','Beat it']
+
+fileArray[0] of this array will be the function reference ('movie-this' 'concert-this' or 'spotify-this')
+fileArray[1] of this array will be the search query (the artist, song name or movie name)
+
+Then there is a conditional check to determine which function reference is in the [0] spot. Depending on which one, it will run a modified version of the 3 above functions called doThis(blank) (ex: doThisSpotify). The main modifications are to set new variables to search queries and to set the [1] portion of the fileArray to be passed into our API calls.
 
 Spotify test: spotify-this-song,"I Want it That Way"
 OMDB test: movie-this,"Terminator"
