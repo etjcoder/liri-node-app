@@ -1,18 +1,19 @@
 require("dotenv").config();
 
+
 var keys = require("./keys.js");
 var Spotify = require('node-spotify-api')
 var spotify = new Spotify(keys.spotify);
 var axios = require("axios");
 var moment = require('moment');
-
+var fs = require('fs');
 
 // var spotify = new Spotify({
     // id: your spotify client id
     // secret: your spotify client secret
 // })
 
-
+var divider = "\n(----------------------------------------------------------)\n"
 
 var request = process.argv[2];
 console.log(request);
@@ -47,7 +48,19 @@ axios
             var showTime = moment(response.data[i].datetime).format("MM-DD-YYYY");
             console.log(showTime)
             console.log("-----------------------")
+            
         }
+        var venue = response.data[0].venue.name;
+            var city = response.data[0].venue.city;
+            var time = moment(response.data[0].datetime).format("MM-DD-YYYY");
+            var artists = artist.toUpperCase();
+            var showString = `You've requested the next upcoming shows for ${artists}! The next show will be at the ${venue} in ${city} on ${time}`
+
+            console.log(showString);
+            fs.appendFile('log.txt', divider + showString, function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+              });
     })
 }
 //\\\\////\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\\/\/\/\/\\\/
@@ -84,6 +97,19 @@ spotify.search({
     console.log("Spotify Link: " + trackArray[0].external_urls.spotify);
     console.log("Album Name: " + trackArray[0].album.name);
     console.log("----------------------------------------------------------------------------")
+    var artist = trackArray[0].artists[0].name;
+    var song = trackArray[0].name;
+    var link = trackArray[0].external_urls.spotify;
+    var albumName = trackArray[0].album.name;
+    var song = songName.toUpperCase();
+    var spotifyString = `You've searched for details on the song, ${song}. ${song} was written by ${artist} and is part of the album ${albumName}. For more information please check out: ${link}`
+    fs.appendFile('log.txt', divider + spotifyString, function (err) {
+        if (err) throw err;
+        console.log('Saved!');
+      });
+
+
+
 }
 
 )
@@ -125,7 +151,23 @@ axios
             console.log(response.data.Plot);
             console.log(response.data.Actors);
         // }
-    })
+
+        var movieTitle = response.data.Title
+        var movieYear = response.data.Year;
+        var movieRating = response.data.imdbRating;
+        var movieCountry = response.data.Country;
+        var movieLanguage = response.data.Language;
+        var moviePlot = response.data.Plot;
+        var movieActors = response.data.Actors;
+        var movieName = movie.toUpperCase();
+        var movieString = `You've requested information on ${movieName}. ${movieTitle} was released in ${movieCountry} in ${movieYear}. It's original release was in ${movieLanguage}.\n It received a ${movieRating} score from IMDB. \n The movie features ${movieActors}. \n The plot of the movie is: ${moviePlot}`
+    
+        fs.appendFile('log.txt', divider + movieString, function (err) {
+            if (err) throw err;
+            console.log('Saved!');
+          });
+    
+    })                                                                                                                                                             
 }
 
 //\\\\////\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\//\/\/\/\\/\/\/\/\\\/
